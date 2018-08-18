@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chaining</title>
+    <style>
+        body {
+            font-size: 30px;
+        }
+
+        .blue {
+            color: blue;
+        }
+
+        .bold {
+            font-size: 40px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div id="divTest" class="blue">
+    test
+</div>
+
+<div id="divTest2">
+    <p>123</p>
+    <p class="child">123</p>
+    <p>123</p>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/1.12.2/jquery.js"></script>
+
+<script>
+    // 方法1
+    setTimeout(function () {
+        // $('#divTest').text('Hello, world!');  // 修改id为divTest的文本为"Hello, world!"
+        // $('#divTest').removeClass('blue');    // 删除id为divTest的样式
+        // $('#divTest').addClass('bold');       // 添加id为divTest的样式
+        // $('#divTest').css('color', 'red');    // 修改id为divTest的样式
+
+        // 方法二的效率要优于方法一(链式语法,性能比较过.因为方法一每次都要进行一次查询,而链式语法只查询一次!)
+        $('#divTest')
+            .text('Hello, world!')
+            .removeClass('blue')
+            .addClass('bold')
+            .css('color', 'red');
+
+        // 但要注意当我们在使用链式语法时, 有些方法具有一定的破坏性, 比如find, add, child, filter
+        // 以下该方法就存在一定的破坏性.这个例子中我们的原意是只对p.child元素修改样式.然后对ID为divTest2的所有元素进行加粗.
+        // 但事实的结果却是只对p.child的元素加粗.跟我们的本意相违背!
+        // 那如何处理呢? 我们需要加入end()方法!这样一来,ID为divTest2下的所有元素都加粗了.
+        $('#divTest2')
+            .find('p.child')
+            .css('color', 'red')
+            .end()
+            .addClass('bold');
+    }, 2000);
+
+    // 还有一点需要注意,就是jquery的有些方法并不返回jquery的对象,
+    // 比如get方法.这也意味着我们没法使用链式语法.
+    $('#divTest2').get(0)
+        .find('p.child')
+        .css('color', 'red')
+        .end()
+        .addClass('bold');
+    }
+
+</script>
+</body>
+</html>
