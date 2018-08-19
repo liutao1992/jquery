@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>basicSelector</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+<h1>h1. 标题</h1>
+<h2>h2. 标题</h2>
+
+<p id="p1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, quae?</p>
+
+<ul class="list">
+    <li>list1</li>
+    <li>list2</li>
+    <ul>
+        <li>list2-1</li>
+        <li>list2-2</li>
+        <li>list2-3</li>
+    </ul>
+    <li>list3</li>
+</ul>
+
+<a href="http://www.baidu.com" target="_blank">百度</a>
+<a href="http://www.163.com">网易</a>
+<a href="#">本地</a>
+
+<p data-id="1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet fugit illum libero, minus odio quas
+    repellat
+    repellendus similique unde voluptatem.</p>
+
+<p data-id="2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet fugit illum libero, minus odio quas
+    repellat
+    repellendus similique unde voluptatem.</p>
+
+<script src="https://cdn.bootcss.com/jquery/1.12.2/jquery.js"></script>
+<script>
+    $(function () {
+//        console.log($('#p1').addClass('highlight'));            // 选择id为p1的元素
+//        console.log($('.list').addClass('highlight'));          // 选择类为list的元素
+//        console.log($('.list > li').addClass('highlight'))      // 选择类为list下的所有li元素
+//        console.log($('a[href="http://www.baidu.com"]').addClass('highlight'));  // 选择a标签中href属性为"http://www.baidu.com"的元素
+//        console.log($('a[href*="www"]').addClass('highlight'))  // 选择a标签中href属性中所有包含www开头的元素
+//        console.log($('a[href^="http"]').addClass('highlight')) // 选择a标签中href属性以http开头的所有元素
+//        console.log($('a[href$="com"]').addClass('highlight'))  // 选择a标签中所有属性值等于com的元素
+          console.log($('a[href][target]').addClass('highlight')) // 选择a标签中属性为href的元素, 并且它含有target的属性
+//        console.log($('a[href!="http://www.baidu.com"]').addClass('highlight'))  //jQuery独有
+//
+        //       console.log($('p[data-id="1"]').addClass('highlight')); // 选择p标签中类为data-id="1"的元素
+    });
+</script>
+</body>
+</html>
