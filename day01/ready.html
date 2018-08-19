@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ready</title>
+</head>
+<body>
+
+<!--大图片-->
+<img src="http://www.imooc.com/static/images/PBTF1NEBCG.jpg" alt="" width="800">
+
+<script src="https://cdn.bootcss.com/jquery/1.12.2/jquery.js"></script>
+<script>
+    /*onload 与 ready的区别*/
+
+    /*
+    * 1. 通过两个方法对比, 我们发现read方法比onload方法要快
+    *
+    * 2. 其次我们要注意, 在以后的编程过程中,onload方法不要与ready方法同时使用
+    *
+    * 3. onload方法通常需要在整个网页响应完成后(该页面的所有图片加载完成)才会调用onload
+    *    ready方法则不同, 只需dom树加载完成后就会调用(即使图片元素没有加载完成也不会有影响)
+    *
+    * */
+
+
+    //    window.onload = function () {
+    //        console.log('onload');
+    //    }
+    $(window).load(function () {
+        console.log('load');
+    });
+    $(document).ready(function () {
+        console.log('ready');
+    });
+</script>
+</body>
+</html>
+
