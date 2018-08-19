@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuerySelector</title>
+    <style>
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box1"></div>
+<div id="box2"></div>
+<div class="box">.box</div>
+<div class="box">.box</div>
+<input type="text" name="username">
+
+
+<script src="https://cdn.bootcss.com/jquery/1.12.2/jquery.js"></script>
+<script>
+    /*
+* jquery中如何选择元素
+*
+* -$("#id")
+* -$(".class")
+* -$("[attribute=value]")
+* -$("element")
+*
+* 该选择器的特点:
+*
+* .兼容css选择器语法以及扩展
+* .返回0个, 1个或多个jQuery元素集合
+* .集合内元素顺序和页面上顺序一致
+*
+* */
+
+
+    $(function () {
+        var element1 = $('#box1');                         // 选择ID为box1的元素
+        var element2 = $('#box1, #box2');                  // 选择ID为box1, box2的元素
+        var element3 = $('.box');
+        var element4 = $('[name="username"]');             // 选择所有属性为username的元素
+        var element5 = $('div');                           // 选择所有的div标签的元素
+        var element6 = $(document.getElementById('box1'));
+
+        console.log(element1);
+        console.log(element2);
+        console.log(element3);
+        console.log(element4);
+        console.log(element5);
+        console.log(element6);
+    });
+</script>
+</body>
+</html>
+
