@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jquery选择器的性能优化</title>
+</head>
+
+<!--
+    1. 尽量使用CSS中有的选择器
+    2. 避免过度约束
+    3. 尽量以ID开头
+    4. 让选择器的右边有更多的特征
+    5. 避免使用全局选择器
+    6. 缓存选择器结果
+-->
+<body>
+<div>
+    <ul id="list" class="list">
+        <li>list-01</li>
+        <li class="item2">list-02</li>
+        <li>list-03</li>
+        <li class="item4">list-04</li>
+        <li>list-05</li>
+        <li>list-06</li>
+        <li>list-07</li>
+        <li>list-08</li>
+        <li>list-09</li>
+        <li>list-10</li>
+    </ul>
+</div>
+<script src="https://cdn.bootcss.com/jquery/1.12.2/jquery.js"></script>
+<script>
+    function logTime(cb) {
+        console.time('logTime');
+        if (typeof cb === 'function') {
+            for (var i = 0; i < 10000; i++) {
+                cb();
+            }
+        }
+        console.timeEnd('logTime');
+    }
+
+    $(function () {
+                  /*
+                  * 这个函数采用的是jquery选择器,因为jquery选择器
+                  * 是从0开始.所以如果我们需要过滤出奇数的话,我们需要从even开始
+                  * */
+        //        logTime(function () {
+        //            $("ul li:even");// slow
+        //        })
+
+                  /**
+                   * 这个函数采用的是css选择器,因为css选择器
+                   * 是从1开始.所以如果我们需要过滤出奇数的话,我们需要从odd开始
+                   * */
+        //        logTime(function () {
+        //            $("ul li:nth-child(odd)");// better
+        //        })
+        //        logTime(function () {
+        //            document.querySelectorAll("ul li:nth-child(odd)"); // best
+        //        })
+        //        logTime(function () {
+        //            $(document.querySelectorAll("ul li:nth-child(odd)")); // better
+        //        })
+
+        //------------------
+
+        //        logTime(function () {
+        //            $('div ul li.item2');// slow
+        //        })
+        //        logTime(function () {
+        //            $('li.item2');// better
+        //        })
+
+        //------------------
+
+        //        logTime(function () {
+        //            $('.list li.item2'); // slow
+        //        })
+        //
+        //        logTime(function () {
+        //            $('#list li.item2'); // better
+        //        })
+
+        //------------------
+
+        //        logTime(function () {
+        //            $('ul.list .item2'); // slow
+        //        })
+        //
+        //        logTime(function () {
+        //            $('.list li.item2'); // better
+        //        })
+
+        //------------------
+
+        //        logTime(function () {
+        //            $('ul'); // slow
+        //        })
+        //
+        //        logTime(function () {
+        //            $('.list'); // better
+        //        })
+
+        //------------------
+
+        logTime(function () { // slow
+            $('#list .item2');
+            $('#list .item4');
+        });
+
+        logTime(function () { // better
+            var ul = $('#list');
+            ul.find('.item2');
+            ul.find('.item4');
+        });
+
+    });
+</script>
+</body>
+
+</html>
