@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>animated</title>
+    <style>
+        div.box {
+            background: yellow;
+            border: 1px solid #aaa;
+            width: 80px;
+            height: 80px;
+            margin: 0 5px;
+            float: left;
+        }
+
+        div.colored {
+            background: green;
+        }
+    </style>
+</head>
+<body>
+
+<button id="run">Run</button>
+
+<div class="box"></div>
+<div id="mover" class="box"></div>
+<div class="box"></div>
+
+<script src="https://cdn.bootcss.com/jquery/1.12.2/jquery.js"></script>
+<script>
+    $(function () {
+
+        $("#run").click(function () {
+
+            // animated选择器会选中正在动画的div元素
+            $("div:animated").toggleClass("colored");
+        });
+
+        function animateIt() {
+            $("#mover").slideToggle("slow", animateIt);
+        }
+
+        animateIt();
+    });
+</script>
+</body>
+</html>
