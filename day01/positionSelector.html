@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>positionFilter</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+<ul>
+    <li>list-01</li>
+    <li>list-02</li>
+    <li>list-03</li>
+    <li>list-04</li>
+    <li>list-05</li>
+    <li>list-06</li>
+    <li>list-07</li>
+    <li>list-08</li>
+    <li>list-09</li>
+    <li>list-10</li>
+</ul>
+<script src="https://cdn.bootcss.com/jquery/1.12.2/jquery.js"></script>
+<script>
+    $(function() {
+          //      console.log($('li:first').addClass('highlight'));   // 选择第一个元素
+        //        console.log($('li:last').addClass('highlight'));    // 选择在最后一个元素
+        //        console.log($('li:even').addClass('highlight'));    // 选择偶数元素
+        //        console.log($('li:odd').addClass('highlight'));     // 选择奇数元素
+        //        console.log($('li:eq(2)').addClass('highlight'));   // 选择第二个元素(下标从0开始)
+         //       console.log($('li:gt(2)').addClass('highlight'));    // 选择大于2的元素
+                  console.log($('li:lt(2)').addClass('highlight'));    // 选择小于2的元素
+    });
+</script>
+</body>
+
+</html>
