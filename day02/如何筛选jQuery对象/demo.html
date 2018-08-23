@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery chapter 2 Demo</title>
+</head>
+<body>
+
+<!-- DOM对象和jQuery对象-->
+
+<!--
+ .区别
+ .检测DOM Object:if(obj.nodeType)  ==> DOM元素通过都有一个nodeType属性
+ .检测jQuery Object:if(obj.jquery) ==> 通常jquery对象都有一个jquery属性, 这个属性是jquery版本号
+ .结论:所以我们可以利用这样的属性来检测对象是jquery对象还是DOM对象.
+ .转换:
+    var jqueryObj = $(domObj);              ==> 将DOM对象转换为jquery对象
+    var domObj = jqueryObj.get([index])     ==> 将jquery对象转换为DOM对象
+ -->
+
+<script src="https://cdn.bootcss.com/jquery/1.12.2/jquery.js"></script>
+<script>
+    $(function () {
+
+        /*案例1: 如何创建jquery对象.*/
+        /* 1.创建jquery对象, 此时jquery对象存储于内存中*/
+        // var div = $('<div>Hello</div>');
+
+        //    console.log(div);
+
+        /* 2. 将jquery对象添加到页面上*/
+        //    div.appendTo('body');
+
+        //    console.log($('div'));
+
+
+        /*案例2: 为jquery对象设置属性*/
+        /* 1. 创建jquery对象(注意我们需要使用空元素<a>)*/
+        var link = $('<a>', {
+            text: 'baidu',
+            href: 'https://www.baidu.com',
+            target: '_blank',
+            title: 'goto baidu'
+        });
+
+        link.appendTo('body');
+
+        /*
+        * 总结: 案例2在创建元素时存在一定的局限性.因为必须使用空元素,
+        * 若采用这样的写法<a>123</a>,添加属性就会失败!
+        * 那我们如何消除这样的局限性呢?
+        * 请看案例3.
+        * */
+
+        /*案例3: 我们使用attr属性.*/
+        var link2 = $('<a>baidu</a>').attr({
+            href: 'https://www.baidu.com',
+            target: '_blank',
+            title: 'goto baidu'
+        });
+
+        link2.appendTo('body');
+
+        /**
+         * 因为我们已经在a标签中添加了text,
+         * 所以我们在属性中就没必要添加text属性了
+         *
+         */
+    /
+    })
+</script>
+</body>
+</html>
