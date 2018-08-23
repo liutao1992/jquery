@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>contentFilter</title>
+    <style>
+        .highlight {
+            padding: 10px;
+            border: 1px solid yellow;
+            background-color: lightyellow;
+        }
+    </style>
+</head>
+<body>
+
+<p></p>
+<p></p>
+<span></span>
+<ul></ul>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, earum.</p>
+<p>Lorem</p>
+<span>Lorem</span>
+<p>123 <span>456</span></p>
+<input type="text" value="input">  <!-- 因为input标签不包含文本内容, 所以该标签也会被认为是空标签 -->
+
+<!-- 内容筛选器 -->
+
+<script src="https://cdn.bootcss.com/jquery/1.12.2/jquery.js"></script>
+<script>
+    $(function () {
+        //         console.log($(':empty').addClass('highlight'));  // empty选择器会选中所有的空标签(即文本标签中不包含内容)
+        //         console.log($('p:contains("Lorem")').addClass('highlight'));  // 选择所有p标签中包含"Lorem"元素的文本标签
+        //         console.log($('span:contains("Lorem")').addClass('highlight')); // 选择所有span标签中包含"Lorem"元素的span标签
+        //         console.log($('p:has(span)').addClass('highlight'));  // 判断p标签中是否包含span标签, 有的话则选中
+                   console.log($('p:parent').addClass('highlight'));  // 选择包含子元素或者文本元素(选择p标签中含有文本元素的标签)
+    });
+</script>
+</body>
+</html>
