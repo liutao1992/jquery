@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery chapter 2 Demo</title>
+</head>
+<body>
+<ul>
+    <li class="item-1">item-1</li>
+    <li class="item-2">item-2</li>
+    <li class="item-3">item-3</li>
+    <li class="item-4">item-4</li>
+    <li class="item-5">item-5</li>
+    <li class="item-6">item-6</li>
+    <li class="item-7">item-7</li>
+    <li class="item-8">item-8</li>
+    <li class="item-9">item-9</li>
+</ul>
+
+<script src="https://cdn.bootcss.com/jquery/1.12.2/jquery.js"></script>
+<script>
+    $(function () {
+
+        /*
+        * 知识点一:
+        *       通过length属性获取元素数量
+        * */
+        var elements = $('li');
+        console.log(elements.length);
+        var elements2 = $('div');
+
+        /**
+         * 通常情况下, jquery在获取不存在的元素时是不会报错的,因为
+         * jquery方法对元素的数量进行了判断.
+         * */
+        // console.log(elements2[0].style.color = 'blue');  // error
+        // console.log(elements2.eq(0).addClass('blue'));  // no error
+        // console.log(elements2.addClass('blue'));  // no error
+
+        /**
+         * 知识点2: 提取元素
+         * .[index] 根据索引返回DOM元素
+         * .get([index]) 返回DOM元素或DOM元素集合
+         * */
+
+
+        // console.log(elements[0]);        // 返回第一个DOM元素
+        // console.log(elements[1]);        // 返回第二个DOM元素
+
+        // console.log(elements.get());     // 返回元素集合
+        // console.log(elements.get(0));    // 返回第一个DOM元素
+        // console.log(elements.get(1));    // 返回第二个DOM元素
+        //
+        // console.log(elements.get(-1));   // 返回第9个DOM元素
+
+        // console.log(elements[-1]);       // 返回undefine
+        // console.log(elements.get(100));  // 返回undefine
+        // console.log(elements[100]);      // 返回undefine
+
+
+        /**
+         * 知识点3:eq(index) 返回jQuery对象
+         *
+         * */
+        // console.log(elements.eq(0));
+        // console.log($('li').eq(0));
+        // console.log($('li:eq(0)'));  ==> 使用eq筛选器
+
+        /**
+         * 优先使用eq方法, 而并非筛选器.因为方法的性能是筛选器
+         * 的的2~3倍.
+         * */
+        //
+        // console.log(elements.eq(0));
+        // console.log(elements.first());
+
+        /**
+         * 以上两个方法等价
+         * */
+        //
+        // console.log(elements.eq(-1));
+        // console.log(elements.last());
+
+        /**
+         * 以上两个方法等价
+         * */
+        //
+        // console.log(elements.toArray());
+        // console.log(elements.get());
+
+        /**
+         * 以上两个方法等价
+         * */
+
+    });
+</script>
+</body>
+</html>
