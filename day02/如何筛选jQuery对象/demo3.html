@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<!-- 通过关系查找jquery对象 -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery chapter 2 Demo</title>
+</head>
+<body>
+
+<div id="box">
+    <div>
+        <div>
+            <p id="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, rem?</p>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/1.12.2/jquery.js"></script>
+<script>
+    $(function () {
+
+        // var element = $('#info').parents();          // 获取ID="info"的所有父原素(包括head,html)
+        // var element2 = $('#info').parents('div');    // 获取ID="info"父元素中的所有div元素(过滤出所有div元素)
+        //
+        // console.log(element);
+        // console.log(element2);
+        //
+        var element3 = $('#box > *');
+        var element4 = $('#box').children();           // 获取ID="box"所有子元素(性能更好)
+
+        /*
+        * 二者等价.
+        * */
+        // console.log(element3);
+        // console.log(element4);
+        //
+        // var element5 = $('#info').children();      //  通常children方法是不返回文本.
+        var element6 = $('#info').contents();          // 如果需要返回文本(p标签), 则需要使用contents方法.
+        //
+        // console.log(element5);
+        // console.log(element6);
+        //
+        var element7 = $('#box').find('p');    // 寻找body元素中的p标签(通过选择器筛选后代元素)
+        //
+        console.log(element7);
+
+    });
+</script>
+</body>
+</html>

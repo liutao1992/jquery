@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>methods</title>
+</head>
+<body>
+
+<div id="box1">
+    <div id="box2">
+        <div id="box3">
+            <p id="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, rem?</p>
+            <ul>
+                <li class="item1">item1</li>
+                <li class="item2">item2</li>
+                <li class="item3">item3</li>
+                <li class="item4">item4</li>
+                <li class="item5">item5</li>
+                <li class="item6">item6</li>
+                <li class="item7">item7</li>
+                <li class="item8">item8</li>
+                <li class="item9">item9</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/1.12.2/jquery.js"></script>
+<script>
+    $(function () {
+
+        /*
+        * 包含children参数方法以及contents方法直接返回所有的子元素,
+        * 它们并不包括孙子元素
+        * */
+        // console.log($('#box3').children());
+        // console.log($('#box3').contents());
+        //
+        // console.log($('#box3').children('ul'));
+        // console.log($('#box3').contents('ul'));
+
+        // console.log($('#box3').find('.item3'));  // find方法通过选择器过滤出子元素与孙子元素
+        //
+        // console.log($('#info').parent());     // parent方法返回当前元素的父元素
+        // console.log($('#info').parents());    // parent返回当前元素的所有父原素
+        //
+        // console.log($('#info').parent('#box3'));    // 通过筛选器筛选出符合要求的元素
+        // console.log($('#info').parents('#box3'));
+        // console.log($('#info').parentsUntil('#box1')); // 过滤出box1以前的元素
+        //
+        //
+        // console.log($('#info').parents('div'));
+
+        /*
+        * 从当前元素开始逐级向上寻找,返回最先匹配的元素, 也能获取到它本身.如果遍历到最后始终未找到则返回空/
+        * */
+        // console.log($('#info').closest('div'));
+
+        /**
+         * 笔记: close与parents的区别:
+         * 1. closest是从当前元素开始匹配的, parents是从父元素开始匹配的.
+         * 2. closest向上找, 找到匹配的就停止; parents会找到所有的父元素,
+         * 并返回一个集合.
+         * 3. closest返回1个或者0个, parents能返回多个.
+         */
+
+        //
+        // console.log($('.item4').next('li'));           // 查找item4的下一个列表项, 结果返回item5.
+        // console.log($('.item4').nextAll('li'));        // 查找item4元素后的所有列表项
+        // console.log($('.item4').nextUntil('.item7'));  // 查找item4元素到item7之间的元素
+        // console.log($('.item4').nextAll());            // 查找item4元素以后的所有元素
+        // console.log($('.item4').nextUntil());          // 如果nextUntil函数不传参数,则表明查找item4元素以后的所有元素,和nextAll一样.
+        //
+        // console.log($('.item6').prev('li'));
+        // console.log($('.item6').prevAll('li'));
+        // console.log($('.item6').prevUntil('.item2'));
+        //
+        //
+        console.log($('.item4').siblings('li'));       // 获取它的同级元素, 但并不包括它本身.
+        console.log($('.item4').siblings());
+        // console.log($('.item4').siblings('.item2'));
+
+    });
+</script>
+</body>
+</html>
