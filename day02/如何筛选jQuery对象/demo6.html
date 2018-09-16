@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- jQuery对象的其他操作 -->
+
+<!--
+    知识点一:
+    is()方法根据选择器,元素或jQuery对象来检测匹配元素集合,
+    如果这些元素中至少有一个元素匹配给定的参数,则返回true.
+
+    知识点二:
+    end()方法将匹配元素集还原到之前的操作状态.
+
+    知识点三:
+    什么是破坏性操作:任何对jquery对象进行改变的操作.比如:删除元素, find(), map(), not(), next(),
+    children(), filter(), parent()等.
+
+    比如:
+    $('#box3') 返回的是"box3"dom对象.但当我们box3元素上再次使用find()方法时, 此时返回的dom对象的子元素.
+    改变了最初的jquery对象"box3".因此我们称之为这样的现象为破坏性的操作. 那如何才能返回最初的jquery对象呢?
+    使用end()方法.
+
+    注意:
+        使用end()方法时, 前一次的操作一定是破坏性操作,不然返回的是一个空对象.
+
+        end()方法的原理:jquery内部采用了一个栈的数据结构,当我们在使用find这样具有破坏性的方法时,jquery将
+        会使用栈将jquery最初的对象(prevObject)保存在数据结构中,当我们在使用end方法时,在从栈中弹出数据.
+
+
+-->
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+
+<body>
+<div id="box1">
+    <div id="box2">
+        <div id="box3">
+            <p id="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, rem?</p>
+            <ul>
+                <li class="item1">item1</li>
+                <li class="item2">item2</li>
+                <li class="item3">item3</li>
+                <li class="item4">item4</li>
+                <li class="item5">item5</li>
+                <li class="item6">item6</li>
+                <li class="item7">item7</li>
+                <li class="item8">item8
+                    <ul></ul>
+                </li>
+                <li class="item9">item9</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/1.12.2/jquery.js"></script>
+<script>
+    $(function () {
+
+        // console.log($('#box3').children());
+        // console.log($('#box3').children().is('p'));
+        // console.log($('#box3').children().is('img'));
+        //
+        // console.log($('#box3').find('.item4').css('color', 'red')
+        //      .end().find('.item6').css('color', 'blue'));
+        //
+        // console.log($('#box3'));
+
+        // 在该代码中,find方法返回item4对象, 当我们再次添加end()方法时, 返回了最初的jquery对象.
+        console.log($('#box3').find('.item4').end());
+        //
+        // console.log($('#box3').find('ul').find('li').end().end().end());
+        //
+        // addBack
+        // console.log(
+        //     $('.item4').nextUntil('.item6').addBack().css('color', 'orange')
+        // );
+    });
+</script>
+</body>
+
+</html>
