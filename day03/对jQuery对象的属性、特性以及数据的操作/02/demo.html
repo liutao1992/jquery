@@ -97,6 +97,15 @@
 
         // console.log(img.className);
         // console.log(img.getAttribute('class'));
+
+
+        /*
+        *  总结:
+        *      1. 如果 attributes 是本来在DOM对象中就存在的，attributes和properties 的值会同步；
+        *      2. 如果 attributes 不是DOM对象内建的属性，attributes和properties 的值不会同步:
+        *      3. 如果 attributes 是本来在DOM对象中就存在的，但是类型为Boolean，那么attributes和properties 的值不会同步；
+        *
+        * */
     });
 </script>
 </body>
