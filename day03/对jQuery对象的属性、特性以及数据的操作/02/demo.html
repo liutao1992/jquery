@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+
+<img id="logo" src="../logo.jpg" alt="jQuery logo" class="img-jquery" title="jQuery logo"/>
+
+<input type="checkbox" id="check"
+       tabindex="1" style="width:50px; height: 50px;"
+       title="Check this!" description="just a checkbox" checked="true"/>
+<script src="https://cdn.bootcss.com/jquery/1.12.2/jquery.js"></script>
+<script>
+    $(function () {
+
+        /*
+        * 特性attributes vs 属性 properties
+        *
+        * 1. 如果attributes(特性) 是本来在DOM对象中就存在的, attributes和
+        *    properties(属性)的值会同步;
+        *
+        * 2. 如果attributes是本来在DOM对象中就存在的, 但是类型为Boolean, 那么
+        *    attributes和properties的值不会同步.
+        *
+        * 3.如果attributes不是DOM对象内建的属性, attributes和properties的值不
+        *   会同步.
+        * */
+
+        /*
+        * 案例1中表明:如果attributes(特性) 是本来在DOM对象中就存在的, attributes和
+        *    properties(属性)的值会同步
+        * */
+        var checkbox = document.getElementById('check');
+
+        // console.log(checkbox.getAttribute('title'));
+        // console.log(checkbox.title);
+
+        // console.log(checkbox.getAttribute('title') === checkbox.title);
+        // checkbox.title = 'new title';
+        // console.log(checkbox.getAttribute('title') === checkbox.title);
+
+        // checkbox.setAttribute('title', 'another title');
+        // console.log(checkbox.getAttribute('title'));
+        // console.log(checkbox.title);
+        // console.log(checkbox.getAttribute('title') === checkbox.title);
+
+        // checkbox.title = 'another title2';
+        // console.log(checkbox.getAttribute('title'));
+        // console.log(checkbox.title);
+        // console.log(checkbox.getAttribute('title') === checkbox.title);
+
+        /**
+         * 案例2:就证明:对于bool值时,attributes和properties的值不会同步.
+         * */
+        // checkbox.checked = false;
+        // console.log(checkbox.checked);
+        // console.log(checkbox.getAttribute('checked'));
+
+
+        // checkbox.setAttribute('checked','false');
+        // console.log(checkbox.checked);
+        // console.log(checkbox.getAttribute('checked'));
+
+        // checkbox.description = 'new description';
+        // console.log(checkbox.description);
+        // console.log(checkbox.getAttribute('description'));
+
+
+        /*
+        *  案例3:对于description属性,它并非是默认属性(内建).即
+        *       当我们打印它的属性值时,它为undefine.
+        * */
+
+        // checkbox.setAttribute('description','new description');
+        // console.log(checkbox.description);
+        // console.log(checkbox.getAttribute('description'));
+
+        /*
+        *  案例4: 对于image元素.虽然值同步,但结果却不相同.
+        * */
+        var img = document.getElementById('logo');
+        // console.log(img.src);                       // 打印结果为绝对地址
+        // console.log(img.getAttribute('src'));       // 打印结果为相对地址
+
+        img.src = "logo.jpg";
+        console.log(img.src);
+        console.log(img.getAttribute('src'));
+
+        /*
+         * 案例5: 如果我们想获取dom元素的class属性时.我们需要记住,在dom元素的特性中,
+         *       我们需要使用className, 而并非class.因为class是保留字.但在获取特性
+         *       时getAttribute,我们就可以使用class.
+         *
+         */
+
+        // console.log(img.className);
+        // console.log(img.getAttribute('class'));
+    });
+</script>
+</body>
+</html>
