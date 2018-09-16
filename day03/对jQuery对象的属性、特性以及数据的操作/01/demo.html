@@ -38,7 +38,12 @@
                                                                // 通过特性是无法获取到值的,因此我们只能通过属性的方式拿到该值.
         console.log(checkbox.checked);
 
+        /*
+            注意:
+            1. 元素的特性使用attribute去获取，返回值是字符
+            2. 元素的属性使用ele. properties这种方式去获取去获取，返回值可以是字符串，也可以是数组等
 
+        */
     });
 </script>
 </body>
