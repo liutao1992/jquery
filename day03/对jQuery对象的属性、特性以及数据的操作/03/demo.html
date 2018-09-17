@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+
+<body>
+<img id="logo" src="../logo.jpg" alt="jQuery logo" class="img-jquery" title="jQuery logo"/>
+<img id="logo2" src="../logo.jpg" alt="jQuery logo2" class="img-jquery2" title="jQuery logo2"/>
+<input type="checkbox" id="check" tabindex="1" style="width:50px; height: 50px;" title="Check this!"
+       description="just a checkbox"/>
+<script src="https://cdn.bootcss.com/jquery/1.12.2/jquery.js"></script>
+<script>
+
+    /*
+    *  在jquery中操作元素的特性:
+    *
+    *  * 获取特性的值: attr(name)
+    *  * 设置特性的值: attr(name, value) attr(attributes)
+    *  * 删除特性: removeAttr(name)
+    * */
+
+    $(function () {
+
+        // var img = $('img');
+
+        // console.log(img.attr('TiTlE'));          // 获取title元素.这里的title是不区分大小写的
+        // console.log(img.attr('title', '123'));   // 设置title元素为123
+        // console.log(img.attr('title'));          // 获取title元素
+
+        var checkbox = $('#check');                 // 当我们获取一个元素未定义的属性时,其值为undefined
+        // console.log(checkbox.attr('checked'));
+
+        checkbox.checked = true;                    // 当我们设置它的属性为true时,分别打印它的属性与特性时会有不同的结果
+        console.log(checkbox.attr('checked'));      // 特性为undefined
+        console.log(checkbox.checked)               // 属性为true
+
+        //        console.log(img.attr('id'));
+        //        console.log(img.attr('class'));
+        //
+        //        console.log(checkbox.attr('tabIndex'));
+        //        console.log(checkbox.attr('TABINDEX'));
+        //        console.log(checkbox.attr('checked'));
+
+        // img.attr('title', 'new title');
+        // img.attr({
+        //     title: 'new title',
+        //     alt: 'new alt',
+        //     tabINDEX:2
+        // });
+
+        /*
+        *  通过函数设置元素的特性
+        * */
+        // img.attr('title', function(index, previousValue) {
+        //     console.log(previousValue)
+        //     return previousValue + '_new_';
+        // });
+
+
+        // img.removeAttr('title alt class');  // 删除多个特性
+        // console.log(img.attr('title'))
+
+    });
+</script>
+</body>
+
+</html>
